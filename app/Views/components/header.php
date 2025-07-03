@@ -1,3 +1,9 @@
+<?php
+$diskonModel = new \App\Models\DiskonModel();
+$today = date('Y-m-d');
+$dataDiskon = $diskonModel->where('tanggal', $today)->first();
+?>
+
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -5,6 +11,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
             <img src="<?php echo base_url() ?>NiceAdmin/assets/img/logo.png" alt="">
             <span class="d-none d-lg-block">Toko</span>
+            
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -24,6 +31,12 @@
                     <i class="bi bi-search"></i>
                 </a>
             </li><!-- End Search Icon-->
+
+            <?php if ($dataDiskon) : ?>
+            <div class="alert alert-success ms-4 mb-0" style="height: 20px; display: flex; align-items: center;">
+                <strong>Hari ini ada diskon <?= number_format($dataDiskon['nominal'], 0, ',', '.'); ?> per item</strong>
+            </div>
+            <?php endif; ?>
 
             <li class="nav-item dropdown">
 

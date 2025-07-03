@@ -61,4 +61,9 @@ class Home extends BaseController
     {
         return view('v_contact');
     }
+
+    public function about()
+    {
+        return view('v_diskon');
+    }
 }
